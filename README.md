@@ -1,0 +1,13 @@
+# Bulk URL Checker
+This is a simple CLI app to check if all your websites are up or not.
+
+**Note:-** This project is early in development and does not work yet
+
+## Todo
+- [x] Add typer
+- [x] Add urllib.request
+- [x] Add csv to store data
+- [x] Add a command to add a url into the csv
+- [ ] Add a command to display the status of all urls of the csv
+- [ ] Make sure user can't enter a non-url
+- [ ] Add styling using rich
