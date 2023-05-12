@@ -4,17 +4,21 @@ import urllib.request
 
 app = typer.Typer()
 
-data = [];
+data = []
 
 # Getting the previously stored data from ./data.csv
-# Shows all data
-@app.command("show")
 def getData():
 	with open("data.csv", 'r') as file:
 		reader = csv.reader(file)
 		for row in reader:
 			data.append(row)
-			print(row[0])
+
+# Shows all data
+@app.command("show")
+def showData():
+	getData()
+	for i in data: 
+		print(i[0])
 			# show data using rich
 
 
@@ -42,11 +46,22 @@ def getUrlStatus():
 # Clears all data
 @app.command("clear-all")
 def clearAll():
-	data = [];
 	with open("data.csv", "w") as file:
 		file.write("")
 	print("Cleared all data")
 
+
+# Clears last entry
+@app.command("clear-last")
+def clearLast():
+	global data
+	getData()
+	print("Removed " + data[-1][0])
+	data = data[:-1]
+	with open("data.csv", "w") as file:
+		for i in data:
+			writer = csv.writer(file)
+			writer.writerow(i)
 
 if __name__ == "__main__":
     app()
