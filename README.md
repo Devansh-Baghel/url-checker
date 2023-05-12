@@ -8,6 +8,9 @@ This is a simple CLI app to check if all your websites are up or not.
 - [x] Add urllib.request
 - [x] Add csv to store data
 - [x] Add a command to add a url into the csv
+- [x] Add a command to check if all websites in data are up
 - [ ] Add a command to display the status of all urls of the csv
+- [ ] Add a command to clear all data
+- [ ] Add a command to clear data according to the user's choice
 - [ ] Make sure user can't enter a non-url
 - [ ] Add styling using rich
