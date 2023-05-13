@@ -1,16 +1,13 @@
 import typer
 import csv
 import urllib.request
-from prettytable import from_csv
-
-
-# with open("myfile.csv") as fp:
-#     mytable = from_csv(fp)
+from prettytable import PrettyTable
+table = PrettyTable()
+table.field_names = ["URL", "STATUS"]
 
 app = typer.Typer()
 
 arrayOfUrls = []
-dataToDisplay = []
 
 # Getting the previously stored data from ./data.csv
 def getData():
@@ -44,19 +41,9 @@ def addUrl(url):
 def getUrlStatus():
 	getData()
 	for url in arrayOfUrls:
-		with open("./temp.csv", "a") as file:
-			writer = csv.writer(file)
-			url_status = urllib.request.urlopen("https://" + url[0]).getcode()
-			writer.writerow([url[0], url_status])
-
-	# To print all checks in a table from temp.csv
-	with open("./temp.csv") as fp:
-		mytable = from_csv(fp)
-		print(mytable)
-
-	# To clear the temp csv file
-	with open("./temp.csv", "w") as fp:
-		fp.write("URL,STATUS\n")
+		url_status = urllib.request.urlopen("https://" + url[0]).getcode()
+		table.add_row([url[0], url_status])
+	print(table)
 
 # Clears all data
 @app.command("clear-all")
