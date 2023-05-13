@@ -14,3 +14,4 @@ This is a simple CLI app to check if all your websites are up or not.
 - [ ] Add a command to clear data according to the user's choice
 - [ ] Make sure user can't enter a non-url
 - [ ] Add styling using rich
+- [x] Display checks using prettytable
